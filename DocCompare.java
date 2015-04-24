@@ -4,7 +4,7 @@
       */
 
 public class DocCompare {
-	// three methods for calculating the similarity of documents:
+	// three different algos for calculating the similarity of documents:
 	public static double nestedLoop(String[] doc1, String[] doc2) {
 	 	 String checkit[] = java.util.Arrays.copyOf(doc1, doc1.length);
 		 java.util.Arrays.sort(checkit);
@@ -52,7 +52,7 @@ public class DocCompare {
     }//closes Search
 	
 	public static double indexNestedLoop(String[] doc1, String[] doc2) {
-		 // index nested loop: sort doc1 and doc2, for each unique word in doc1,
+		 // sort doc1 and doc2, for every unique word in doc1,
 		 // find all occurrences in doc2 using a binary search
 		 String check1[] = java.util.Arrays.copyOf(doc1, doc1.length);
 		 String check2[] = java.util.Arrays.copyOf(doc2, doc2.length);
@@ -98,7 +98,7 @@ public class DocCompare {
     }//closes indexNestedLoop
 	
 	 public static double sortMerge(String[] doc1, String[] doc2) {
-		 // sort merge: sort doc1 and doc2, for each unique word in doc1,
+		 // sort doc1 and doc2, for each unique word in doc1,
 		 // find all occurences in doc2 by "merging"
 		 String checkit1[] = java.util.Arrays.copyOf(doc1, doc1.length);
 		 String checkit2[] = java.util.Arrays.copyOf(doc2, doc2.length);
