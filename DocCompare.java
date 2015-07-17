@@ -1,10 +1,9 @@
-/*
-      THIS CODE IS MY OWN WORK, IT WAS WRITTEN WITHOUT CONSULTING
-      CODE WRITTEN BY OTHER STUDENTS. Milap Naik
-      */
+
+/*THIS CODE IS MY OWN WORK, IT WAS WRITTEN WITHOUT CONSULTING
+ *CODE WRITTEN BY OTHER STUDENTS. Milap Naik*/
 
 public class DocCompare {
-	// three different algos for calculating the similarity of documents:
+	/* Three different algos for calculating the similarity of documents: */
 	public static double nestedLoop(String[] doc1, String[] doc2) {
 	 	 String checkit[] = java.util.Arrays.copyOf(doc1, doc1.length);
 		 java.util.Arrays.sort(checkit);
@@ -14,8 +13,8 @@ public class DocCompare {
 		 String lastword = "";
 		
 		 for (int i = 0; i < checkit.length; i++) {
-		     if (!(checkit[i].equals(lastword))) {
-		    	 String unique = checkit[i];
+			 if (!(checkit[i].equals(lastword))) {
+				 String unique = checkit[i];
 		    	 double count = 0.0;
 		    	 for (int j = 0; j < doc2.length; j++) {
 		    		 if (doc2[j].equals(unique)) {
@@ -28,7 +27,7 @@ public class DocCompare {
 		 lastword = checkit[i];
 		 }//closes for
 		 return sim;
-   }//closes nestedLoop
+	}//closes nestedLoop
 	
 	public static int Search(String[] document, String key, int index) {
 		 int l = index;

@@ -8,8 +8,7 @@ import java.net.URLConnection;
 import java.util.Locale;
 import java.util.Scanner;
 
-//COPIED FROM THE BOOK TO HELP MY WRITE THIS METHOD, MAINLY BECAUSE
-//THE STARTER CODE HAD IT.
+/* COPIED FROM THE BOOK TO HELP MY WRITE THIS METHOD. */
 
 /**
  *  <i>Input</i>. This class provides methods for reading strings
@@ -25,27 +24,23 @@ import java.util.Scanner;
  *  <i>Introduction to Programming in Java: An Interdisciplinary Approach</i> by Robert Sedgewick and Kevin Wayne.
  */
 public final class In {
-    private Scanner scanner;
+	private Scanner scanner;
 
-    // assume Unicode UTF-8 encoding
-    //private String charsetName = "UTF-8";
+    /* Assume Unicode UTF-8 encoding
+     * private String charsetName = "UTF-8"; */
 
     private String charsetName = "ISO-8859-1";
 
-    // assume language = English, country = US for consistency with System.out.
+    /* Assume language = English, country = US for consistency with System.out.*/
     private Locale usLocale = new Locale("en", "US");
 
-   /**
-     * Create an input stream for standard input.
-     */
+    /* Create an input stream for standard input. */
     public In() {
         scanner = new Scanner(new BufferedInputStream(System.in), charsetName);
         scanner.useLocale(usLocale);
     }
 
-   /**
-     * Create an input stream from a socket.
-     */
+    /* Create an input stream from a socket. */
     public In(Socket socket) {
         try {
             InputStream is = socket.getInputStream();
@@ -57,9 +52,7 @@ public final class In {
         }
     }
 
-   /**
-     * Create an input stream from a URL.
-     */
+    /* Create an input stream from a URL. */
     public In(URL url) {
         try {
             URLConnection site = url.openConnection();
@@ -72,9 +65,7 @@ public final class In {
         }
     }
 
-   /**
-     * Create an input stream from a file.
-     */
+    /* Create an input stream from a file. */
     public In(File file) {
 
         try {
@@ -87,13 +78,11 @@ public final class In {
     }
 
 
-   /**
-     * Create an input stream from a filename or web page name.
-     */
+    /* Create an input stream from a filename or web page name. */
     public In(String s) {
 
         try {
-            // first try to read file from local file system
+            /* First try to read file from local file system */
             File file = new File(s);
             if (file.exists()) {
                 scanner = new Scanner(file, charsetName);
@@ -101,10 +90,10 @@ public final class In {
                 return;
             }
 
-            // next try for files included in jar
+            /* Next try for files included in jar */
             URL url = getClass().getResource(s);
 
-            // or URL from web
+            /* Or URL from web */
             if (url == null) { url = new URL(s); }
 
             URLConnection site = url.openConnection();
@@ -117,30 +106,22 @@ public final class In {
         }
     }
 
-   /**
-     * Does the input stream exist?
-     */
+    /* Does the input stream exist? */
     public boolean exists()  {
         return scanner != null;
     }
 
-   /**
-     * Is the input stream empty?
-     */
+    /* Is the input stream empty? */
     public boolean isEmpty() {
         return !scanner.hasNext();
     }
 
-   /**
-     * Does the input stream have a next line?
-     */
+    /* Does the input stream have a next line? */
     public boolean hasNextLine() {
         return scanner.hasNextLine();
     }
 
-   /**
-     * Read and return the next line.
-     */
+    /* Read and return the next line. */
     public String readLine() {
         String line;
         try                 { line = scanner.nextLine(); }
@@ -148,27 +129,23 @@ public final class In {
         return line;
     }
 
-   /**
-     * Read and return the next character.
-     */
+    /* Read and return the next character. */
     public char readChar() {
-        // (?s) for DOTALL mode so . matches any character, including a line termination character
-        // 1 says look only one character ahead
-        // consider precompiling the pattern
+        /* (?s) for DOTALL mode so . matches any character, including a line termination character
+         * 1 says look only one character ahead
+         * consider precompiling the pattern */
         String s = scanner.findWithinHorizon("(?s).", 1);
         return s.charAt(0);
     }
 
 
 
-    // return rest of input as string
-   /**
-     * Read and return the remainder of the input as a string.
-     */
+    /* Return rest of input as string
+     * Read and return the remainder of the input as a string. */
     public String readAll() {
         if (!scanner.hasNextLine()) { return null; }
 
-        // reference: http://weblogs.java.net/blog/pat/archive/2004/10/stupid_scanner_1.html
+         /* reference: http://weblogs.java.net/blog/pat/archive/2004/10/stupid_scanner_1.html */
         return scanner.useDelimiter("\\A").next();
     }
 
@@ -402,7 +379,7 @@ public final class In {
         System.out.println();
 
 
-        // read one line at a time from absolute Windows path
+        /* Read one line at a time from absolute Windows path */
         System.out.println("readLine() from absolute Windows path");
         System.out.println("---------------------------------------------------------------------------");
         try {
